@@ -1,0 +1,82 @@
+# Informations générales du club — modifiez ce fichier librement,
+# aucune connaissance en code n'est nécessaire.
+
+nom_club: "Tennis Club de Chusclan"
+accroche: "70 licenciés, une seule passion : le tennis en famille et en équipe"
+
+adresse: "Chemin de la Combe de Carmignan, 30200 Chusclan"
+telephone_contact: "06 XX XX XX XX"
+nom_contact: "Marie Dupont (secrétaire)"
+email: "contact@tennisclub-village.fr"
+
+horaires_ouverture:
+  - jour: "Mardi"
+    creneaux: "17h - 20h"
+  - jour: "Mercredi"
+    creneaux: "9h - 19h (cours enfants l'après-midi)"
+  - jour: "Samedi"
+    creneaux: "9h - 18h"
+  - jour: "Dimanche"
+    creneaux: "9h - 13h"
+
+lien_adhesion_payasso: "https://www.creditmutuel.fr/fr/alliancefederale/presse/communiques-de-presse/pay-asso.html"
+
+reseaux_sociaux:
+  facebook: "https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/"
+  whatsapp_general: "https://chat.whatsapp.com/votre-lien-groupe-general"
+
+prestations:
+  - titre: "Cours enfants (6-12 ans)"
+    description: "Mercredi après-midi, groupes de 6, encadré par un moniteur diplômé."
+    tarif: "120€ / an"
+  - titre: "Cours ados/adultes"
+    description: "Cours collectifs le soir en semaine, tous niveaux."
+    tarif: "180€ / an"
+  - titre: "Compétition (équipes)"
+    description: "Championnat départemental, entraînements dédiés le week-end."
+    tarif: "Inclus dans l'adhésion compétiteur"
+  - titre: "Adhésion loisir simple"
+    description: "Accès libre aux courts en dehors des créneaux cours/compétition."
+    tarif: "90€ / an"
+
+histoire:
+  texte: "Depuis le 4 novembre 2011, Le club de tennis de Chusclan vous accueille pour découvrir le plaisir du sport à partager dans une ambiance familiale. Des cours sont proposés en semaine, et des compétitions loisirs et officielles sont disputées tout au long de l'année."
+
+infrastructures:
+  nb_courts: 2
+  surface: "Béton poreux"
+  exterieur_interieur: "Extérieur"
+  eclaires: true
+
+statistiques:
+  nb_adherents: 70
+  nb_enfants: 25
+  nb_equipes: 4
+  annee_fondation: 2011
+
+histoire_photos:
+  - "decouvrir-chusclan.jpg"
+  - "cours-1.png"
+  - "chusclan-mairie.jpg"
+
+infrastructures_photo: "fond-accueil.jpg"
+
+statistiques_photos:
+  - "tournois-enfants-1.png"
+  - "tournois-2.jpg"
+  - "tournois-1.png"
+  - "tournois-enfants-2.jpg"
+
+contacts:
+  - role: "Président"
+    nom: "Frédéric ANGELI"
+    telephone: "06 84 55 97 98"
+    email: null
+  - role: "Éducateur"
+    nom: "François DURUISSEAU"
+    telephone: "04 66 33 11 84"
+    email: "tennis.chusclan@gmail.com"
+  - role: "Trésorière"
+    nom: "Catherine POBEL"
+    telephone: "06 72 57 29 50"
+    email: null

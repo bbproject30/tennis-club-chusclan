@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ config.nom_club }} — Nos partenaires{% endblock %}
+
+{% block content %}
+  <section>
+    <h2>Nos partenaires</h2>
+    <p>Merci à celles et ceux qui soutiennent le club.</p>
+    <div class="grid">
+      {% for p in partenaires %}
+      <div class="card">
+        {% if p.logo %}<img src="{{ base_url }}static/images/{{ p.logo }}" alt="{{ p.nom }}">{% endif %}
+        <h3>{{ p.nom }}</h3>
+        <p>{{ p.description }}</p>
+        {% if p.lien %}<a href="{{ p.lien }}" target="_blank">Visiter le site</a>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

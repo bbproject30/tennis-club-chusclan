@@ -1,0 +1,20 @@
+# Événements conviviaux et souvenirs. "type" peut être "passe" ou "a_venir".
+# "image" est le nom du fichier dans static/images/ (mettez le fichier là-bas).
+
+- titre: "Assemblée générale + galette des rois"
+  date: "2026-01-24"
+  type: "a_venir"
+  description: "Bilan de la saison et moment convivial autour de la galette."
+  image: null
+
+- titre: "Tournoi interne d'été + barbecue"
+  date: "2025-07-13"
+  type: "passe"
+  description: "Une belle édition avec plus de 30 participants et un barbecue le soir."
+  image: "tournoi-ete-2025.jpg"
+
+- titre: "Journée portes ouvertes"
+  date: "2025-09-06"
+  type: "passe"
+  description: "Découverte gratuite pour les nouveaux habitants du village."
+  image: "portes-ouvertes-2025.jpg"

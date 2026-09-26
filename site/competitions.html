@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis Club de Chusclan — Compétitions</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="">
+  <header class="site-header">
+    <div class="container">
+      <div class="header-brand">
+        <img src="static/images/logo_club.svg" alt="Logo Tennis Club de Chusclan" class="header-logo">
+        <h1>Tennis Club de Chusclan</h1>
+      </div>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="adhesions.html">Adhésions & Tarifs</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="competitions.html">Compétitions</a>
+        <a href="partenaires.html">Nos partenaires</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<section>
+  <h2>Calendrier des compétitions</h2>
+  <p>Molette ou pincement pour zoomer, survol pour les détails d'un match.</p>
+  <div class="legende-categories">
+    
+    <span class="legende-item">
+      <span class="legende-couleur" style="background: #c81d25;"></span>
+      Coupe Seniors +40ans Messieurs
+    </span>
+    
+    <span class="legende-item">
+      <span class="legende-couleur" style="background: #2f7d4f;"></span>
+      Coupe Bleue 4ème Serie Dames
+    </span>
+    
+    <span class="legende-item">
+      <span class="legende-couleur" style="background: #3498db;"></span>
+      Coupe Bleue 4ème Serie Messieurs
+    </span>
+    
+  </div>
+  <div id="timeline-competitions"></div>
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const groups = new vis.DataSet([{"id": "coupe-seniors-40ans-messieurs", "content": "Coupe Seniors +40ans Messieurs"}, {"id": "coupe-bleue-4-me-serie-dames", "content": "Coupe Bleue 4ème Serie Dames"}, {"id": "coupe-bleue-4-me-serie-messieurs", "content": "Coupe Bleue 4ème Serie Messieurs"}]);
+  const items = new vis.DataSet([{"id": 0, "group": "coupe-seniors-40ans-messieurs", "start": "2026-09-26", "content": "vs TC DU DUCHE-UZES 3", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#c81d25;'></span>Coupe Seniors +40ans Messieurs</span><strong>vs TC DU DUCHE-UZES 3</strong><br>Domicile", "style": "background-color:#c81d25; border-color:#c81d25; color:white;"}, {"id": 1, "group": "coupe-bleue-4-me-serie-dames", "start": "2026-09-27", "content": "vs TC SOMMIERES 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#2f7d4f;'></span>Coupe Bleue 4ème Serie Dames</span><strong>vs TC SOMMIERES 1</strong><br>Extérieur", "style": "background-color:#2f7d4f; border-color:#2f7d4f; color:white;"}, {"id": 2, "group": "coupe-seniors-40ans-messieurs", "start": "2026-10-03", "content": "vs HAUT DE NIMES TC 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#c81d25;'></span>Coupe Seniors +40ans Messieurs</span><strong>vs HAUT DE NIMES TC 1</strong><br>Extérieur", "style": "background-color:#c81d25; border-color:#c81d25; color:white;"}, {"id": 3, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-10-04", "content": "vs TC CAVEIRAC 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TC CAVEIRAC 1</strong><br>Extérieur", "style": "background-color:#3498db; border-color:#3498db; color:white;"}, {"id": 4, "group": "coupe-bleue-4-me-serie-dames", "start": "2026-10-04", "content": "vs TENNIS CLUB DE BAGARD 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#2f7d4f;'></span>Coupe Bleue 4ème Serie Dames</span><strong>vs TENNIS CLUB DE BAGARD 1</strong><br>Domicile", "style": "background-color:#2f7d4f; border-color:#2f7d4f; color:white;"}, {"id": 5, "group": "coupe-seniors-40ans-messieurs", "start": "2026-10-10", "content": "vs TC AIMARGUES 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#c81d25;'></span>Coupe Seniors +40ans Messieurs</span><strong>vs TC AIMARGUES 1</strong><br>Extérieur", "style": "background-color:#c81d25; border-color:#c81d25; color:white;"}, {"id": 6, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-10-11", "content": "vs TENNIS CLUB DE ROUSSON 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TENNIS CLUB DE ROUSSON 1</strong><br>Domicile", "style": "background-color:#3498db; border-color:#3498db; color:white;"}, {"id": 7, "group": "coupe-bleue-4-me-serie-dames", "start": "2026-10-11", "content": "vs TC SAINT VICTOR LA COSTE 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#2f7d4f;'></span>Coupe Bleue 4ème Serie Dames</span><strong>vs TC SAINT VICTOR LA COSTE 1</strong><br>Extérieur", "style": "background-color:#2f7d4f; border-color:#2f7d4f; color:white;"}, {"id": 8, "group": "coupe-seniors-40ans-messieurs", "start": "2026-10-17", "content": "vs TC BRIGNON 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#c81d25;'></span>Coupe Seniors +40ans Messieurs</span><strong>vs TC BRIGNON 1</strong><br>Domicile", "style": "background-color:#c81d25; border-color:#c81d25; color:white;"}, {"id": 9, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-10-18", "content": "vs TC VAUVERT 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TC VAUVERT 1</strong><br>Extérieur", "style": "background-color:#3498db; border-color:#3498db; color:white;"}, {"id": 10, "group": "coupe-bleue-4-me-serie-dames", "start": "2026-10-18", "content": "vs TC CENDRASIEN 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#2f7d4f;'></span>Coupe Bleue 4ème Serie Dames</span><strong>vs TC CENDRASIEN 1</strong><br>Extérieur", "style": "background-color:#2f7d4f; border-color:#2f7d4f; color:white;"}, {"id": 11, "group": "coupe-seniors-40ans-messieurs", "start": "2026-11-07", "content": "vs TC BLAUZACOIS 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#c81d25;'></span>Coupe Seniors +40ans Messieurs</span><strong>vs TC BLAUZACOIS 1</strong><br>Extérieur", "style": "background-color:#c81d25; border-color:#c81d25; color:white;"}, {"id": 12, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-11-08", "content": "vs TC MANDUEL 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TC MANDUEL 1</strong><br>Domicile", "style": "background-color:#3498db; border-color:#3498db; color:white;"}, {"id": 13, "group": "coupe-bleue-4-me-serie-dames", "start": "2026-11-08", "content": "vs TC SAINT GENIES 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#2f7d4f;'></span>Coupe Bleue 4ème Serie Dames</span><strong>vs TC SAINT GENIES 1</strong><br>Domicile", "style": "background-color:#2f7d4f; border-color:#2f7d4f; color:white;"}, {"id": 14, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-11-15", "content": "vs TENNIS CLUB MARGUERITTES 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TENNIS CLUB MARGUERITTES 1</strong><br>Extérieur", "style": "background-color:#3498db; border-color:#3498db; color:white;"}, {"id": 15, "group": "coupe-bleue-4-me-serie-messieurs", "start": "2026-11-22", "content": "vs TENNIS CLUB LES MAGES 1", "title": "<span class='tooltip-titre'><span class='tooltip-pastille' style='background:#3498db;'></span>Coupe Bleue 4ème Serie Messieurs</span><strong>vs TENNIS CLUB LES MAGES 1</strong><br>Domicile", "style": "background-color:#3498db; border-color:#3498db; color:white;"}]);
+
+  const container = document.getElementById('timeline-competitions');
+  const options = {
+    stack: false,
+    orientation: 'top',
+    zoomMin: 1000 * 60 * 60 * 24 * 3,      // zoom max : ~3 jours visibles
+    zoomMax: 1000 * 60 * 60 * 24 * 365,    // dézoom max : 1 an
+    margin: { item: 10 },
+  };
+
+  new vis.Timeline(container, items, groups, options);
+});
+</script>
+<section>
+  <h2>Calendrier officiel — Comité Tennis Gard</h2>
+  <p>Document officiel transmis par le Comité Tennis Gard pour la saison 2027.</p>
+
+  <div class="pdf-container">
+    <iframe src="static/documents/competitions_equipe_gard_2026_2027.pdf" title="Calendrier officiel Comité Tennis Gard 2027"></iframe>
+  </div>
+
+  <div style="text-align:center; margin-top:1rem;">
+    <a class="btn-primary" href="static/documents/competitions_equipe_gard_2026_2027.pdf" download>
+      <i class="fa-solid fa-file-arrow-down"></i> Télécharger le PDF
+    </a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Tennis Club de Chusclan — Chemin de la Combe de Carmignan, 30200 Chusclan</p>
+
+      <div class="footer-contacts">
+        
+        <div class="footer-contact">
+          <p class="contact-role">Président</p>
+          <p class="contact-nom">Frédéric ANGELI</p>
+          <a href="tel:06 84 55 97 98">06 84 55 97 98</a>
+          
+        </div>
+        
+        <div class="footer-contact">
+          <p class="contact-role">Éducateur</p>
+          <p class="contact-nom">François DURUISSEAU</p>
+          <a href="tel:04 66 33 11 84">04 66 33 11 84</a>
+          <a href="mailto:tennis.chusclan@gmail.com">tennis.chusclan@gmail.com</a>
+        </div>
+        
+        <div class="footer-contact">
+          <p class="contact-role">Trésorière</p>
+          <p class="contact-nom">Catherine POBEL</p>
+          <a href="tel:06 72 57 29 50">06 72 57 29 50</a>
+          
+        </div>
+        
+      </div>
+      <div class="social-links">
+        
+        <a href="https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        
+        
+        <a href="https://chat.whatsapp.com/votre-lien-groupe-general" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% block title %}{{ config.nom_club }} — Adhésions & Tarifs{% endblock %}
+
+{% block content %}
+<section>
+  <h2>Adhésions & Tarifs</h2>
+  <p>Choisissez votre profil, ajustez les quantités par formule, le total se calcule automatiquement.</p>
+
+  <div class="toggle-buttons">
+    <button class="toggle-btn active" data-target="adultes">Adultes</button>
+    <button class="toggle-btn" data-target="enfants">Enfants</button>
+  </div>
+
+  <div class="grid price-grid" id="grid-adultes">
+    {% for f in adhesions.adultes %}
+    <div class="price-card" data-prix="{{ f.prix }}" data-type="{{ f.type }}" data-nom="{{ f.titre }} ({{ f.sous_titre }})">
+      {% if f.badge %}<span class="badge">{{ f.badge }}</span>{% endif %}
+      <h3>{{ f.titre }}</h3>
+      <p class="sous-titre">{{ f.sous_titre }}</p>
+      <p class="price-value">{{ f.prix }}€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="grid price-grid" id="grid-enfants" style="display:none;">
+    {% for f in adhesions.enfants %}
+    <div class="price-card" data-prix="{{ f.prix }}" data-type="{{ f.type }}" data-nom="{{ f.titre }} ({{ f.sous_titre }})">
+      {% if f.badge %}<span class="badge">{{ f.badge }}</span>{% endif %}
+      <h3>{{ f.titre }}</h3>
+      <p class="sous-titre">{{ f.sous_titre }}</p>
+      <p class="price-value">{{ f.prix }}€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="info-callouts">
+    <div class="info-callout">
+      <i class="fa-solid fa-people-group"></i>
+      <p>{{ adhesions.reduction_famille }}</p>
+    </div>
+    <div class="info-callout">
+      <i class="fa-solid fa-key"></i>
+      <p>{{ adhesions.caution }}</p>
+    </div>
+  </div>
+
+  <div class="calculette">
+    <h3>Votre simulation</h3>
+
+    <div class="calculette-options">
+      <label class="option-ligne">
+        <input type="checkbox" id="famille-check">
+        Réduction famille (10% sur les cours, dès 2 cours au total)
+      </label>
+      <label class="option-ligne">
+        Nombre de clés d'accès (caution {{ adhesions.caution_montant }}€/clé, remboursable)
+        <input type="number" id="cles-qty" min="0" value="0" class="cles-input">
+      </label>
+    </div>
+
+    <ul id="recap-liste" class="recap-liste">
+      <li class="recap-vide">Aucune formule sélectionnée pour l'instant.</li>
+    </ul>
+
+    <div class="recap-total">
+      <span>Total à payer</span>
+      <span id="total-value">0€</span>
+    </div>
+  </div>
+
+  <div class="cta-inscription">
+    <a class="btn-primary btn-large btn-stacked" href="{{ config.lien_adhesion_payasso }}" target="_blank">
+      <span><i class="fa-solid fa-lock"></i> Payer en ligne</span>
+      <img src="{{ base_url }}static/images/logo-credit-mutuel.png" alt="Crédit Mutuel" class="btn-logo">
+    </a>
+    <div class="cta-infos">
+    <p class="cta-bulletin">
+      <i class="fa-solid fa-file-lines"></i>
+      N'oubliez pas de télécharger et compléter également le
+      <a href="{{ base_url }}static/documents/bulletin_adhesion_2027.pdf" target="_blank">bulletin d'adhésion (PDF)</a>
+    </p>
+    <p class="cta-secure">
+      <i class="fa-solid fa-shield-halved"></i>
+      Paiement 100% sécurisé via Payasso, la solution du Crédit Mutuel
+    </p>
+  </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('grid-adultes').style.display = this.dataset.target === 'adultes' ? 'grid' : 'none';
+    document.getElementById('grid-enfants').style.display = this.dataset.target === 'enfants' ? 'grid' : 'none';
+  });
+});
+
+document.querySelectorAll('.price-card').forEach(card => {
+  const valueEl = card.querySelector('.qty-value');
+  card.querySelector('.qty-incr').addEventListener('click', () => {
+    valueEl.textContent = parseInt(valueEl.textContent) + 1;
+    card.classList.toggle('active', parseInt(valueEl.textContent) > 0);
+    recalculer();
+  });
+  card.querySelector('.qty-decr').addEventListener('click', () => {
+    const val = Math.max(0, parseInt(valueEl.textContent) - 1);
+    valueEl.textContent = val;
+    card.classList.toggle('active', val > 0);
+    recalculer();
+  });
+});
+
+function recalculer() {
+  const caution_unitaire = {{ adhesions.caution_montant }};
+  const familleActive = document.getElementById('famille-check').checked;
+  const clesQty = parseInt(document.getElementById('cles-qty').value) || 0;
+
+  let sousTotalCours = 0;
+  let sousTotalAutre = 0;
+  let coursQuantiteTotale = 0;
+  const recap = document.getElementById('recap-liste');
+  recap.innerHTML = '';
+
+  const cartesActives = [...document.querySelectorAll('.price-card')].filter(
+    c => parseInt(c.querySelector('.qty-value').textContent) > 0
+  );
+
+  if (cartesActives.length === 0) {
+    recap.innerHTML = '<li class="recap-vide">Aucune formule sélectionnée pour l\'instant.</li>';
+  }
+
+  cartesActives.forEach(c => {
+    const prix = parseFloat(c.dataset.prix);
+    const qty = parseInt(c.querySelector('.qty-value').textContent);
+    const sousTotal = prix * qty;
+
+    if (c.dataset.type === 'cours') {
+      sousTotalCours += sousTotal;
+      coursQuantiteTotale += qty;
+    } else {
+      sousTotalAutre += sousTotal;
+    }
+
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${c.dataset.nom} × ${qty}</span><span>${sousTotal}€</span>`;
+    recap.appendChild(li);
+  });
+
+  const reductionApplicable = familleActive && coursQuantiteTotale >= 2;
+  const reduction = reductionApplicable ? sousTotalCours * 0.10 : 0;
+
+  if (reductionApplicable) {
+    const li = document.createElement('li');
+    li.classList.add('recap-reduction');
+    li.innerHTML = `<span>Réduction famille (-10% sur les cours)</span><span>-${reduction.toFixed(0)}€</span>`;
+    recap.appendChild(li);
+  }
+
+  if (clesQty > 0) {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>Caution clés (${clesQty} × ${caution_unitaire}€, remboursable)</span><span>+${clesQty * caution_unitaire}€</span>`;
+    recap.appendChild(li);
+  }
+
+  const total = sousTotalCours + sousTotalAutre - reduction + (clesQty * caution_unitaire);
+  document.getElementById('total-value').textContent = total.toFixed(0) + '€';
+}
+
+document.getElementById('famille-check').addEventListener('change', recalculer);
+document.getElementById('cles-qty').addEventListener('input', recalculer);
+</script>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block body_class %}page-accueil{% endblock %}
+{% block title %}{{ config.nom_club }} — Accueil{% endblock %}
+
+{% block content %}
+  <section class="section-plein-large">
+    <div class="scroll-photos">
+      {% for photo in config.histoire_photos %}
+      <img src="{{ base_url }}static/images/{{ photo }}" alt="">
+      {% endfor %}
+      {% for photo in config.histoire_photos %}
+      <img src="{{ base_url }}static/images/{{ photo }}" alt="" aria-hidden="true">
+      {% endfor %}
+    </div>
+    <div class="scroll-overlay"></div>
+    <div class="container">
+      <div class="section-plein-content">
+        <div class="texte-sur-fond">
+          <h2>Notre histoire</h2>
+          <p>{{ config.histoire.texte }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-plein-large" style="background-image: url('{{ base_url }}static/images/{{ config.infrastructures_photo }}'); background-size: cover; background-position: center;">
+    <div class="scroll-overlay"></div>
+    <div class="container">
+      <div class="section-plein-content">
+        <h2>Nos infrastructures</h2>
+        <div class="grid infra-grid">
+          <div class="infra-card">
+            <i class="fa-solid fa-border-all"></i>
+            <p class="infra-value">{{ config.infrastructures.nb_courts }}</p>
+            <p class="infra-label">Courts</p>
+          </div>
+          <div class="infra-card">
+            <i class="fa-solid fa-layer-group"></i>
+            <p class="infra-value">{{ config.infrastructures.surface }}</p>
+            <p class="infra-label">Surface</p>
+          </div>
+          <div class="infra-card">
+            <i class="fa-solid fa-sun"></i>
+            <p class="infra-value">{{ config.infrastructures.exterieur_interieur }}</p>
+            <p class="infra-label">Type</p>
+          </div>
+          <div class="infra-card">
+            <i class="fa-solid fa-lightbulb"></i>
+            <p class="infra-value">{{ "Oui" if config.infrastructures.eclaires else "Non" }}</p>
+            <p class="infra-label">Éclairés</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-plein-large">
+    <div class="scroll-photos">
+      {% for photo in config.statistiques_photos %}
+      <img src="{{ base_url }}static/images/{{ photo }}" alt="">
+      {% endfor %}
+      {% for photo in config.statistiques_photos %}
+      <img src="{{ base_url }}static/images/{{ photo }}" alt="" aria-hidden="true">
+      {% endfor %}
+    </div>
+    <div class="scroll-overlay"></div>
+    <div class="container">
+      <div class="section-plein-content">
+        <h2>Le club en chiffres</h2>
+        <div class="grid stats-grid">
+          <div class="stat-card">
+            <p class="stat-value">{{ config.statistiques.nb_adherents }}</p>
+            <p class="stat-label">Adhérents</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">{{ config.statistiques.nb_enfants }}</p>
+            <p class="stat-label">Enfants licenciés</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">{{ config.statistiques.nb_equipes }}</p>
+            <p class="stat-label">Équipes en compétition</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">{{ config.statistiques.annee_fondation }}</p>
+            <p class="stat-label">Année de création</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+          <a class="btn-primary" href="{{ base_url }}adhesions.html">Nous rejoindre / Adhérer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Venir nous voir</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2862.7276723645414!2d4.675219375866967!3d44.15085942010234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b5bd7cfd5bfab7%3A0xb5534aa6705b79e7!2sTENNIS%20CLUB%20CHUSCLAN!5e0!3m2!1sfr!2sfr!4v1789074693518!5m2!1sfr!2sfr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </section>
+
+{% endblock %}

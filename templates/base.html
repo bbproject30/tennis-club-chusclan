@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ config.nom_club }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ base_url }}static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="site-header">
+    <div class="container">
+      <div class="header-brand">
+        <img src="{{ base_url }}static/images/logo_club.svg" alt="Logo {{ config.nom_club }}" class="header-logo">
+        <h1>{{ config.nom_club }}</h1>
+      </div>
+      <nav>
+        <a href="{{ base_url }}index.html">Accueil</a>
+        <a href="{{ base_url }}adhesions.html">Adhésions & Tarifs</a>
+        <a href="{{ base_url }}actualites.html">Actualités</a>
+        <a href="{{ base_url }}competitions.html">Compétitions</a>
+        <a href="{{ base_url }}partenaires.html">Nos partenaires</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>{{ config.nom_club }} — {{ config.adresse }}</p>
+
+      <div class="footer-contacts">
+        {% for c in config.contacts %}
+        <div class="footer-contact">
+          <p class="contact-role">{{ c.role }}</p>
+          <p class="contact-nom">{{ c.nom }}</p>
+          {% if c.telephone %}<a href="tel:{{ c.telephone }}">{{ c.telephone }}</a>{% endif %}
+          {% if c.email %}<a href="mailto:{{ c.email }}">{{ c.email }}</a>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="social-links">
+        {% if config.reseaux_sociaux.facebook %}
+        <a href="{{ config.reseaux_sociaux.facebook }}" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        {% endif %}
+        {% if config.reseaux_sociaux.whatsapp_general %}
+        <a href="{{ config.reseaux_sociaux.whatsapp_general }}" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        {% endif %}
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

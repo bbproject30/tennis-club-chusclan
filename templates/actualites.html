@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ config.nom_club }} — Actualités{% endblock %}
+
+{% block content %}
+<section>
+  <h2>Actualités</h2>
+  <p>Suivez toute la vie du club (photos, résultats, événements) directement depuis notre page Facebook.</p>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v19.0">
+  </script>
+
+  <div class="fb-feed-container">
+    <div class="fb-page"
+      data-href="{{ config.reseaux_sociaux.facebook }}"
+      data-tabs="timeline"
+      data-width=""
+      data-height="700"
+      data-small-header="false"
+      data-adapt-container-width="true"
+      data-hide-cover="false"
+      data-show-facepile="true">
+      <blockquote cite="{{ config.reseaux_sociaux.facebook }}" class="fb-xfbml-parse-ignore">
+        <a href="{{ config.reseaux_sociaux.facebook }}">{{ config.nom_club }}</a>
+      </blockquote>
+    </div>
+  </div>
+
+  <p class="fallback-lien">
+    Le flux ne s'affiche pas ? <a href="{{ config.reseaux_sociaux.facebook }}" target="_blank">Voir directement sur Facebook <i class="fa-brands fa-facebook"></i></a>
+  </p>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ config.nom_club }} — Compétitions{% endblock %}
+
+{% block content %}
+<section>
+  <h2>Calendrier des compétitions</h2>
+  <p>Molette ou pincement pour zoomer, survol pour les détails d'un match.</p>
+  <div class="legende-categories">
+    {% for c in legende_competitions %}
+    <span class="legende-item">
+      <span class="legende-couleur" style="background: {{ c.couleur }};"></span>
+      {{ c.nom }}
+    </span>
+    {% endfor %}
+  </div>
+  <div id="timeline-competitions"></div>
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const groups = new vis.DataSet({{ timeline_groups_json | safe }});
+  const items = new vis.DataSet({{ timeline_items_json | safe }});
+
+  const container = document.getElementById('timeline-competitions');
+  const options = {
+    stack: false,
+    orientation: 'top',
+    zoomMin: 1000 * 60 * 60 * 24 * 3,      // zoom max : ~3 jours visibles
+    zoomMax: 1000 * 60 * 60 * 24 * 365,    // dézoom max : 1 an
+    margin: { item: 10 },
+  };
+
+  new vis.Timeline(container, items, groups, options);
+});
+</script>
+<section>
+  <h2>Calendrier officiel — Comité Tennis Gard</h2>
+  <p>Document officiel transmis par le Comité Tennis Gard pour la saison 2027.</p>
+
+  <div class="pdf-container">
+    <iframe src="{{ base_url }}static/documents/competitions_equipe_gard_2026_2027.pdf" title="Calendrier officiel Comité Tennis Gard 2027"></iframe>
+  </div>
+
+  <div style="text-align:center; margin-top:1rem;">
+    <a class="btn-primary" href="{{ base_url }}static/documents/competitions_equipe_gard_2026_2027.pdf" download>
+      <i class="fa-solid fa-file-arrow-down"></i> Télécharger le PDF
+    </a>
+  </div>
+</section>
+{% endblock %}

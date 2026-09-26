@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis Club de Chusclan — Adhésions & Tarifs</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="">
+  <header class="site-header">
+    <div class="container">
+      <div class="header-brand">
+        <img src="static/images/logo_club.svg" alt="Logo Tennis Club de Chusclan" class="header-logo">
+        <h1>Tennis Club de Chusclan</h1>
+      </div>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="adhesions.html">Adhésions & Tarifs</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="competitions.html">Compétitions</a>
+        <a href="partenaires.html">Nos partenaires</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<section>
+  <h2>Adhésions & Tarifs</h2>
+  <p>Choisissez votre profil, ajustez les quantités par formule, le total se calcule automatiquement.</p>
+
+  <div class="toggle-buttons">
+    <button class="toggle-btn active" data-target="adultes">Adultes</button>
+    <button class="toggle-btn" data-target="enfants">Enfants</button>
+  </div>
+
+  <div class="grid price-grid" id="grid-adultes">
+    
+    <div class="price-card" data-prix="165" data-type="cours" data-nom="Cours loisirs (Adhésion + 1 entraînement / semaine)">
+      
+      <h3>Cours loisirs</h3>
+      <p class="sous-titre">Adhésion + 1 entraînement / semaine</p>
+      <p class="price-value">165€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="255" data-type="cours" data-nom="Cours loisirs (Adhésion + 2 entraînements / semaine)">
+      <span class="badge">Le plus complet</span>
+      <h3>Cours loisirs</h3>
+      <p class="sous-titre">Adhésion + 2 entraînements / semaine</p>
+      <p class="price-value">255€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="100" data-type="adhesion" data-nom="Adhésion (Licence FFT + accès aux courts)">
+      <span class="badge">Le plus choisi</span>
+      <h3>Adhésion</h3>
+      <p class="sous-titre">Licence FFT + accès aux courts</p>
+      <p class="price-value">100€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="65" data-type="adhesion" data-nom="Adhésion simple (Déjà licencié dans un autre club)">
+      
+      <h3>Adhésion simple</h3>
+      <p class="sous-titre">Déjà licencié dans un autre club</p>
+      <p class="price-value">65€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="52" data-type="adhesion" data-nom="Championnat seul (Licence FFT + accès aux matchs)">
+      
+      <h3>Championnat seul</h3>
+      <p class="sous-titre">Licence FFT + accès aux matchs</p>
+      <p class="price-value">52€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="grid price-grid" id="grid-enfants" style="display:none;">
+    
+    <div class="price-card" data-prix="130" data-type="cours" data-nom="Cours (Adhésion + 1 entraînement / semaine)">
+      <span class="badge">Le plus choisi</span>
+      <h3>Cours</h3>
+      <p class="sous-titre">Adhésion + 1 entraînement / semaine</p>
+      <p class="price-value">130€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="205" data-type="cours" data-nom="Cours (Adhésion + 2 entraînements / semaine)">
+      <span class="badge">Le plus complet</span>
+      <h3>Cours</h3>
+      <p class="sous-titre">Adhésion + 2 entraînements / semaine</p>
+      <p class="price-value">205€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="65" data-type="adhesion" data-nom="Adhésion (Licence FFT + accès aux courts)">
+      
+      <h3>Adhésion</h3>
+      <p class="sous-titre">Licence FFT + accès aux courts</p>
+      <p class="price-value">65€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+    <div class="price-card" data-prix="45" data-type="adhesion" data-nom="Adhésion simple (Déjà licencié dans un autre club)">
+      
+      <h3>Adhésion simple</h3>
+      <p class="sous-titre">Déjà licencié dans un autre club</p>
+      <p class="price-value">45€<span>/an</span></p>
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn qty-decr">−</button>
+        <span class="qty-value">0</span>
+        <button type="button" class="qty-btn qty-incr">+</button>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="info-callouts">
+    <div class="info-callout">
+      <i class="fa-solid fa-people-group"></i>
+      <p>10% de réduction sur le total pour plusieurs membres d'une même famille inscrits à un cours.</p>
+    </div>
+    <div class="info-callout">
+      <i class="fa-solid fa-key"></i>
+      <p>Une caution de 30€ par chèque est demandée pour les clés d'accès aux courts. Le chèque est encaissé, puis remboursé lors de la restitution des clés.</p>
+    </div>
+  </div>
+
+  <div class="calculette">
+    <h3>Votre simulation</h3>
+
+    <div class="calculette-options">
+      <label class="option-ligne">
+        <input type="checkbox" id="famille-check">
+        Réduction famille (10% sur les cours, dès 2 cours au total)
+      </label>
+      <label class="option-ligne">
+        Nombre de clés d'accès (caution 30€/clé, remboursable)
+        <input type="number" id="cles-qty" min="0" value="0" class="cles-input">
+      </label>
+    </div>
+
+    <ul id="recap-liste" class="recap-liste">
+      <li class="recap-vide">Aucune formule sélectionnée pour l'instant.</li>
+    </ul>
+
+    <div class="recap-total">
+      <span>Total à payer</span>
+      <span id="total-value">0€</span>
+    </div>
+  </div>
+
+  <div class="cta-inscription">
+    <a class="btn-primary btn-large btn-stacked" href="https://www.creditmutuel.fr/fr/alliancefederale/presse/communiques-de-presse/pay-asso.html" target="_blank">
+      <span><i class="fa-solid fa-lock"></i> Payer en ligne</span>
+      <img src="static/images/logo-credit-mutuel.png" alt="Crédit Mutuel" class="btn-logo">
+    </a>
+    <div class="cta-infos">
+    <p class="cta-bulletin">
+      <i class="fa-solid fa-file-lines"></i>
+      N'oubliez pas de télécharger et compléter également le
+      <a href="static/documents/bulletin_adhesion_2027.pdf" target="_blank">bulletin d'adhésion (PDF)</a>
+    </p>
+    <p class="cta-secure">
+      <i class="fa-solid fa-shield-halved"></i>
+      Paiement 100% sécurisé via Payasso, la solution du Crédit Mutuel
+    </p>
+  </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('grid-adultes').style.display = this.dataset.target === 'adultes' ? 'grid' : 'none';
+    document.getElementById('grid-enfants').style.display = this.dataset.target === 'enfants' ? 'grid' : 'none';
+  });
+});
+
+document.querySelectorAll('.price-card').forEach(card => {
+  const valueEl = card.querySelector('.qty-value');
+  card.querySelector('.qty-incr').addEventListener('click', () => {
+    valueEl.textContent = parseInt(valueEl.textContent) + 1;
+    card.classList.toggle('active', parseInt(valueEl.textContent) > 0);
+    recalculer();
+  });
+  card.querySelector('.qty-decr').addEventListener('click', () => {
+    const val = Math.max(0, parseInt(valueEl.textContent) - 1);
+    valueEl.textContent = val;
+    card.classList.toggle('active', val > 0);
+    recalculer();
+  });
+});
+
+function recalculer() {
+  const caution_unitaire = 30;
+  const familleActive = document.getElementById('famille-check').checked;
+  const clesQty = parseInt(document.getElementById('cles-qty').value) || 0;
+
+  let sousTotalCours = 0;
+  let sousTotalAutre = 0;
+  let coursQuantiteTotale = 0;
+  const recap = document.getElementById('recap-liste');
+  recap.innerHTML = '';
+
+  const cartesActives = [...document.querySelectorAll('.price-card')].filter(
+    c => parseInt(c.querySelector('.qty-value').textContent) > 0
+  );
+
+  if (cartesActives.length === 0) {
+    recap.innerHTML = '<li class="recap-vide">Aucune formule sélectionnée pour l\'instant.</li>';
+  }
+
+  cartesActives.forEach(c => {
+    const prix = parseFloat(c.dataset.prix);
+    const qty = parseInt(c.querySelector('.qty-value').textContent);
+    const sousTotal = prix * qty;
+
+    if (c.dataset.type === 'cours') {
+      sousTotalCours += sousTotal;
+      coursQuantiteTotale += qty;
+    } else {
+      sousTotalAutre += sousTotal;
+    }
+
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${c.dataset.nom} × ${qty}</span><span>${sousTotal}€</span>`;
+    recap.appendChild(li);
+  });
+
+  const reductionApplicable = familleActive && coursQuantiteTotale >= 2;
+  const reduction = reductionApplicable ? sousTotalCours * 0.10 : 0;
+
+  if (reductionApplicable) {
+    const li = document.createElement('li');
+    li.classList.add('recap-reduction');
+    li.innerHTML = `<span>Réduction famille (-10% sur les cours)</span><span>-${reduction.toFixed(0)}€</span>`;
+    recap.appendChild(li);
+  }
+
+  if (clesQty > 0) {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>Caution clés (${clesQty} × ${caution_unitaire}€, remboursable)</span><span>+${clesQty * caution_unitaire}€</span>`;
+    recap.appendChild(li);
+  }
+
+  const total = sousTotalCours + sousTotalAutre - reduction + (clesQty * caution_unitaire);
+  document.getElementById('total-value').textContent = total.toFixed(0) + '€';
+}
+
+document.getElementById('famille-check').addEventListener('change', recalculer);
+document.getElementById('cles-qty').addEventListener('input', recalculer);
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Tennis Club de Chusclan — Chemin de la Combe de Carmignan, 30200 Chusclan</p>
+
+      <div class="footer-contacts">
+        
+        <div class="footer-contact">
+          <p class="contact-role">Président</p>
+          <p class="contact-nom">Frédéric ANGELI</p>
+          <a href="tel:06 84 55 97 98">06 84 55 97 98</a>
+          
+        </div>
+        
+        <div class="footer-contact">
+          <p class="contact-role">Éducateur</p>
+          <p class="contact-nom">François DURUISSEAU</p>
+          <a href="tel:04 66 33 11 84">04 66 33 11 84</a>
+          <a href="mailto:tennis.chusclan@gmail.com">tennis.chusclan@gmail.com</a>
+        </div>
+        
+        <div class="footer-contact">
+          <p class="contact-role">Trésorière</p>
+          <p class="contact-nom">Catherine POBEL</p>
+          <a href="tel:06 72 57 29 50">06 72 57 29 50</a>
+          
+        </div>
+        
+      </div>
+      <div class="social-links">
+        
+        <a href="https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        
+        
+        <a href="https://chat.whatsapp.com/votre-lien-groupe-general" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

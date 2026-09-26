@@ -1,0 +1,773 @@
+:root {
+  --vert-tennis: #be0202;
+  --jaune-balle: #d4e157;
+  --gris-fonce: #2b2b2b;
+  --gris-clair: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--gris-fonce);
+  line-height: 1.6;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url('../images/fond-accueil.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.page-accueil {
+  background-image: none;
+  background-color: #999999;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-header {
+  background: var(--vert-tennis);
+  color: white;
+  padding: 1rem 0;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-header h1 { font-size: 1.4rem; margin: 0; }
+
+.site-header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+}
+
+.site-header nav a:hover { text-decoration: underline; }
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--gris-clair);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.hero h2 { font-size: 1.6rem; }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--vert-tennis);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover { background: #245f3c; }
+
+section { margin: 3rem 0; }
+section h2 {
+  border-bottom: 3px solid var(--jaune-balle);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--gris-clair);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.card .date { color: #666; font-size: 0.9rem; }
+.card .tarif { font-weight: 700; color: var(--vert-tennis); }
+
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+table td, table th {
+  padding: 0.6rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.site-footer {
+  background: var(--gris-fonce);
+  color: #ccc;
+  margin-top: 4rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.site-footer a { color: white; margin: 0 0.5rem; }
+.social-links { margin-top: 0.8rem; }
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+#timeline-competitions {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.vis-item.cat-seniors_h { background: #2f7d4f; border-color: #245f3c; color: white; }
+.vis-item.cat-seniors_f { background: #d4547e; border-color: #b03d63; color: white; }
+.vis-item.cat-mixte { background: #e67e22; border-color: #c1650f; color: white; }
+.vis-item.cat-jeunes { background: #d4e157; border-color: #b3c23f; color: #2b2b2b; }
+.vis-item.cat-inter_village { background: #3498db; border-color: #2578b5; color: white; }
+
+.legende-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.legende-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.legende-couleur {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+/* Mois/année (ligne du haut) : en gras, plus lisible */
+.vis-time-axis .vis-text.vis-major {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gris-fonce);
+  padding-top: 4px;
+}
+
+/* Jours/semaines (ligne du bas) : plus discret */
+.vis-time-axis .vis-text.vis-minor {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* Traits verticaux qui séparent mois/semaines */
+.vis-time-axis .vis-grid.vis-major {
+  border-color: #ccc;
+}
+.vis-time-axis .vis-grid.vis-minor {
+  border-color: #eee;
+}
+
+/* Noms des catégories à gauche (Seniors Messieurs, etc.) */
+.vis-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--gris-clair);
+}
+
+/* Alterne un léger fond entre les lignes, pour mieux les distinguer */
+.vis-group:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Les cases de match elles-mêmes : coins arrondis, ombre légère */
+.vis-item {
+  border-radius: 6px;
+  border-width: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Petit effet au survol d'un match */
+.vis-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* Ligne verticale "aujourd'hui" plus visible */
+.vis-current-time {
+  background-color: #e67e22;
+  width: 2px;
+}
+
+.vis-tooltip {
+  font-family: 'Segoe UI', system-ui, sans-serif !important;
+  background: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+  padding: 0.7rem 1rem !important;
+  color: var(--gris-fonce) !important;
+  line-height: 1.5 !important;
+}
+
+.tooltip-titre {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.tooltip-pastille {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.social-links i {
+  font-size: 1.1rem;
+}
+
+.header-logo {
+  height: 6rem;
+  width: auto;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.toggle-buttons {
+  display: inline-flex;
+  background: var(--gris-clair);
+  border-radius: 30px;
+  padding: 0.3rem;
+  margin: 1.5rem 0;
+}
+
+.toggle-btn {
+  border: none;
+  background: none;
+  padding: 0.6rem 1.6rem;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--gris-fonce);
+  transition: background 0.2s, color 0.2s;
+}
+
+.toggle-btn.active {
+  background: var(--vert-tennis);
+  color: white;
+}
+
+.price-card {
+  position: relative;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.price-card .badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--jaune-balle);
+  color: var(--gris-fonce);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+}
+
+.price-card h3 {
+  margin: 0.6rem 0 0.2rem;
+}
+
+.price-card .sous-titre {
+  color: #777;
+  font-size: 0.85rem;
+  min-height: 2.4em;
+}
+
+.price-card .price-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--vert-tennis);
+  margin-top: 0.8rem;
+}
+
+.price-card .price-value span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #999;
+}
+
+.info-callouts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.info-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  background: var(--gris-clair);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+.info-callout i {
+  color: var(--vert-tennis);
+  font-size: 1.3rem;
+  margin-top: 0.1rem;
+}
+
+/* Rend les price-card cliquables/cochables sans changer leur apparence */
+.price-card {
+  display: block;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.calculette {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.calculette h3 { margin-top: 0; }
+
+.calculette-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 1rem 0 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.option-ligne {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.cles-input {
+  width: 60px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.recap-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recap-liste li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+  font-size: 0.9rem;
+}
+
+.recap-liste .recap-vide {
+  color: #999;
+  font-style: italic;
+  border-bottom: none;
+}
+
+.recap-liste .recap-reduction {
+  color: var(--vert-tennis);
+  font-weight: 600;
+}
+
+.recap-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--vert-tennis);
+}
+
+.price-card.active {
+  border-color: var(--vert-tennis);
+  box-shadow: 0 0 0 2px var(--vert-tennis);
+}
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--vert-tennis);
+  background: white;
+  color: var(--vert-tennis);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  background: var(--vert-tennis);
+  color: white;
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.cta-inscription {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.btn-large {
+  font-size: 1.15rem;
+  padding: 1.1rem 2.6rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s, box-shadow 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+.cta-secure {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.cta-secure i {
+  color: var(--vert-tennis);
+}
+
+.cta-favicon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.btn-stacked {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-logo {
+  height: 30px;
+  width: auto;
+}
+
+.btn-stacked span {
+  font-size: 1.8rem;
+}
+
+.mots-cles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.mot-cle {
+  background: var(--jaune-balle);
+  color: var(--gris-fonce);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+}
+
+.infra-grid, .stats-grid {
+  text-align: center;
+}
+
+.infra-card, .stat-card {
+  background: var(--gris-clair);
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+}
+
+.infra-card i {
+  font-size: 1.8rem;
+  color: var(--vert-tennis);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.infra-value, .stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--vert-tennis);
+  margin: 0.3rem 0 0.1rem;
+}
+
+.infra-label, .stat-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Sections plein écran avec photos défilantes en fond */
+.section-plein-large {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.scroll-photos {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: defilement-marquee 60s linear infinite;
+}
+
+.scroll-photos img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.scroll-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  z-index: 1;
+}
+
+.section-plein-content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes defilement-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-photos { animation: none; }
+}
+
+/* Infrastructures : image de part et d'autre */
+.infra-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.infra-photo {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .infra-layout {
+    grid-template-columns: 1fr;
+  }
+  .infra-photo {
+    max-height: 200px;
+  }
+}
+
+.fb-feed-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.fallback-lien {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 1rem;
+}
+
+.fallback-lien a {
+  color: var(--vert-tennis);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-contacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-contact .contact-role {
+  color: var(--jaune-balle);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.footer-contact .contact-nom {
+  color: white;
+  font-weight: 600;
+  margin: 0.1rem 0 0.3rem;
+}
+
+.footer-contact a {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.pdf-container {
+  width: 100%;
+  height: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.cta-bulletin {
+  margin-top: 0;
+  font-size: 0.9rem;
+  color: var(--gris-fonce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.cta-bulletin i {
+  color: var(--vert-tennis);
+}
+
+.cta-bulletin a {
+  color: var(--vert-tennis);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.cta-infos {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.texte-sur-fond {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  display: inline-block;
+}
+
+.infra-grid, .stats-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+}

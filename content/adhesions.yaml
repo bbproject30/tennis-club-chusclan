@@ -1,0 +1,52 @@
+adultes:
+  - titre: "Cours loisirs"
+    sous_titre: "Adhésion + 1 entraînement / semaine"
+    prix: 165
+    type: "cours"
+    badge: null
+  - titre: "Cours loisirs"
+    sous_titre: "Adhésion + 2 entraînements / semaine"
+    prix: 255
+    type: "cours"
+    badge: "Le plus complet"
+  - titre: "Adhésion"
+    sous_titre: "Licence FFT + accès aux courts"
+    prix: 100
+    type: "adhesion"
+    badge: "Le plus choisi"
+  - titre: "Adhésion simple"
+    sous_titre: "Déjà licencié dans un autre club"
+    prix: 65
+    type: "adhesion"
+    badge: null
+  - titre: "Championnat seul"
+    sous_titre: "Licence FFT + accès aux matchs"
+    prix: 52
+    type: "adhesion"
+    badge: null
+
+enfants:
+  - titre: "Cours"
+    sous_titre: "Adhésion + 1 entraînement / semaine"
+    prix: 130
+    type: "cours"
+    badge: "Le plus choisi"
+  - titre: "Cours"
+    sous_titre: "Adhésion + 2 entraînements / semaine"
+    prix: 205
+    type: "cours"
+    badge: "Le plus complet"
+  - titre: "Adhésion"
+    sous_titre: "Licence FFT + accès aux courts"
+    prix: 65
+    type: "adhesion"
+    badge: null
+  - titre: "Adhésion simple"
+    sous_titre: "Déjà licencié dans un autre club"
+    prix: 45
+    type: "adhesion"
+    badge: null
+
+reduction_famille: "10% de réduction sur le total pour plusieurs membres d'une même famille inscrits à un cours."
+caution: "Une caution de 30€ par chèque est demandée pour les clés d'accès aux courts. Le chèque est encaissé, puis remboursé lors de la restitution des clés."
+caution_montant: 30
