@@ -30,25 +30,17 @@
   <h2>Actualités</h2>
   <p>Suivez toute la vie du club (photos, résultats, événements) directement depuis notre page Facebook.</p>
 
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v19.0">
-  </script>
-
   <div class="fb-feed-container">
-    <div class="fb-page"
-      data-href="https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/"
-      data-tabs="timeline"
-      data-width=""
-      data-height="700"
-      data-small-header="false"
-      data-adapt-container-width="true"
-      data-hide-cover="false"
-      data-show-facepile="true">
-      <blockquote cite="https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/" class="fb-xfbml-parse-ignore">
-        <a href="https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/">Tennis Club de Chusclan</a>
-      </blockquote>
-    </div>
+    <iframe
+      src="https://www.facebook.com/plugins/page.php?href={{ config.reseaux_sociaux.facebook | urlencode }}&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+      width="500"
+      height="700"
+      style="border:none;overflow:hidden;"
+      scrolling="no"
+      frameborder="0"
+      allowfullscreen="true"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
   </div>
 
   <p class="fallback-lien">
