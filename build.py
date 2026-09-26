@@ -26,7 +26,7 @@ OUTPUT_DIR = ROOT / "site"
 # Mettez ici le nom de votre dépôt GitHub si vous utilisez GitHub Pages
 # en mode "projet" (ex: "https://<user>.github.io/<repo>/").
 # Laissez "" si vous utilisez un domaine personnalisé ou Netlify.
-BASE_URL = ""
+BASE_URL = "/tennis-club-chusclan/"
 
 COULEURS_PALETTE = ["#c81d25", "#2f7d4f", "#3498db", "#e67e22", "#8e44ad", "#d4547e", "#16a085", "#b8860b"]
 
