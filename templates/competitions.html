@@ -3,17 +3,18 @@
 
 {% block content %}
 <section>
-  <h2>Calendrier des compétitions</h2>
-  <p>Molette ou pincement pour zoomer, survol pour les détails d'un match.</p>
-  <div class="legende-categories">
-    {% for c in legende_competitions %}
-    <span class="legende-item">
-      <span class="legende-couleur" style="background: {{ c.couleur }};"></span>
-      {{ c.nom }}
-    </span>
-    {% endfor %}
+  <h2>Compétitions par équipe</h2>
+  <div class="timeline-wrapper">
+    <div class="legende-categories">
+      {% for c in legende_competitions %}
+      <span class="legende-item">
+        <span class="legende-couleur" style="background: {{ c.couleur }};"></span>
+        {{ c.nom }}
+      </span>
+      {% endfor %}
+    </div>
+    <div id="timeline-competitions"></div>
   </div>
-  <div id="timeline-competitions"></div>
 </section>
 
 <link href="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
@@ -37,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <section>
   <h2>Calendrier officiel — Comité Tennis Gard</h2>
-  <p>Document officiel transmis par le Comité Tennis Gard pour la saison 2027.</p>
 
   <div class="pdf-container">
     <iframe src="{{ base_url }}static/documents/competitions_equipe_gard_2026_2027.pdf" title="Calendrier officiel Comité Tennis Gard 2027"></iframe>

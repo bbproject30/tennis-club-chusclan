@@ -43,6 +43,26 @@
     {% endfor %}
   </div>
 
+  <div class="planning-section" id="planning-adultes">
+    <h3>Planning des entraînements — Adultes</h3>
+    <table class="planning-table">
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      {% for p in adhesions.planning.adultes %}
+      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td><td>{{ p.encadrant }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class="planning-section" id="planning-enfants" style="display:none;">
+    <h3>Planning des entraînements — Enfants</h3>
+    <table class="planning-table">
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      {% for p in adhesions.planning.enfants %}
+      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td><td>{{ p.encadrant }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+
   <div class="info-callouts">
     <div class="info-callout">
       <i class="fa-solid fa-people-group"></i>
@@ -104,6 +124,8 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
     this.classList.add('active');
     document.getElementById('grid-adultes').style.display = this.dataset.target === 'adultes' ? 'grid' : 'none';
     document.getElementById('grid-enfants').style.display = this.dataset.target === 'enfants' ? 'grid' : 'none';
+    document.getElementById('planning-adultes').style.display = this.dataset.target === 'adultes' ? 'block' : 'none';
+    document.getElementById('planning-enfants').style.display = this.dataset.target === 'enfants' ? 'block' : 'none';
   });
 });
 

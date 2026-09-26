@@ -28,27 +28,27 @@
     <div class="container">
       <div class="section-plein-content">
         <h2>Nos infrastructures</h2>
-        <div class="grid infra-grid">
-          <div class="infra-card">
-            <i class="fa-solid fa-border-all"></i>
-            <p class="infra-value">{{ config.infrastructures.nb_courts }}</p>
-            <p class="infra-label">Courts</p>
+
+        <div class="installations-grid">
+          {% for inst in config.infrastructures %}
+          <div class="installation-card">
+            <h3>{{ inst.nom }}</h3>
+            <ul class="installation-details">
+              <li><i class="fa-solid fa-layer-group"></i> {{ inst.surface }}</li>
+              <li><i class="fa-solid fa-sun"></i> {{ inst.exterieur_interieur }}</li>
+              <li><i class="fa-solid fa-lightbulb"></i> {{ "Éclairé" if inst.eclaire else "Non éclairé" }}</li>
+            </ul>
           </div>
-          <div class="infra-card">
-            <i class="fa-solid fa-layer-group"></i>
-            <p class="infra-value">{{ config.infrastructures.surface }}</p>
-            <p class="infra-label">Surface</p>
-          </div>
-          <div class="infra-card">
-            <i class="fa-solid fa-sun"></i>
-            <p class="infra-value">{{ config.infrastructures.exterieur_interieur }}</p>
-            <p class="infra-label">Type</p>
-          </div>
-          <div class="infra-card">
-            <i class="fa-solid fa-lightbulb"></i>
-            <p class="infra-value">{{ "Oui" if config.infrastructures.eclaires else "Non" }}</p>
-            <p class="infra-label">Éclairés</p>
-          </div>
+          {% endfor %}
+        </div>
+
+        <div class="club-house-card">
+          <h3><i class="fa-solid fa-house"></i> Le club house</h3>
+          <ul class="club-house-liste">
+            {% for item in config.club_house %}
+            <li><i class="fa-solid {{ item.icone }}"></i> {{ item.label }}</li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
@@ -67,24 +67,59 @@
     <div class="container">
       <div class="section-plein-content">
         <h2>Le club en chiffres</h2>
-        <div class="grid stats-grid">
-          <div class="stat-card">
-            <p class="stat-value">{{ config.statistiques.nb_adherents }}</p>
-            <p class="stat-label">Adhérents</p>
+
+        <div class="stats-detail-grid">
+          <div class="stat-detail-card">
+            <h3>Adhérents</h3>
+            <div class="donut-wrapper">
+              <div class="donut" style="background: conic-gradient(var(--vert-tennis) 0% {{ pct_enfants }}%, var(--jaune-balle) {{ pct_enfants }}% 100%);">
+                <div class="donut-center">
+                  <span class="donut-total">{{ total_adherents }}</span>
+                  <span class="donut-label">adhérents</span>
+                </div>
+              </div>
+            </div>
+            <ul class="donut-legende">
+              <li><span class="dot" style="background:var(--vert-tennis);"></span> {{ config.statistiques.adherents.enfants }} enfants</li>
+              <li><span class="dot" style="background:var(--jaune-balle);"></span> {{ nb_adultes }} adultes ({{ config.statistiques.adherents.adultes_femmes }} femmes, {{ config.statistiques.adherents.adultes_hommes }} hommes)</li>
+            </ul>
+            <p class="depuis-note">Club fondé en {{ config.statistiques.annee_fondation }}</p>
           </div>
-          <div class="stat-card">
-            <p class="stat-value">{{ config.statistiques.nb_enfants }}</p>
-            <p class="stat-label">Enfants licenciés</p>
+
+          <div class="stat-detail-card">
+            <h3>Pratiques</h3>
+            <div class="types-pratique-badges">
+              {% for type in config.statistiques.types_pratique %}
+              <span class="mot-cle">{{ type }}</span>
+              {% endfor %}
+            </div>
+            <div class="pratique-highlights">
+              {% for p in config.statistiques.pratiques %}
+              <div class="pratique-row">
+                <i class="fa-solid {{ p.icone }}"></i>
+                <div>
+                  <p class="pratique-texte">{{ p.texte }}</p>
+                  <p class="pratique-detail">{{ p.detail }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="pratique-cta">
+              <i class="fa-solid fa-baseball-bat-ball"></i> Venez nous voir !
+            </div>
           </div>
-          <div class="stat-card">
-            <p class="stat-value">{{ config.statistiques.nb_equipes }}</p>
-            <p class="stat-label">Équipes en compétition</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-value">{{ config.statistiques.annee_fondation }}</p>
-            <p class="stat-label">Année de création</p>
+
+          <div class="stat-detail-card">
+            <h3>Compétitions</h3>
+            <p class="comp-total">{{ config.statistiques.competitions.nb_equipes }}<span> équipes engagées</span></p>
+            <ul class="simple-liste">
+              {% for e in config.statistiques.competitions.liste %}
+              <li><i class="fa-solid fa-users"></i> {{ e }}</li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
+
         <div style="text-align:center; margin-top:2rem;">
           <a class="btn-primary" href="{{ base_url }}adhesions.html">Nous rejoindre / Adhérer</a>
         </div>

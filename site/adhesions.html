@@ -151,6 +151,40 @@
     
   </div>
 
+  <div class="planning-section" id="planning-adultes">
+    <h3>Planning des entraînements — Adultes</h3>
+    <table class="planning-table">
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      
+      <tr><td>Lundi</td><td>19h00 - 20h30</td><td>Adultes loisirs débutants</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Mardi</td><td>18h30 - 20h00</td><td>Adultes compétiteurs 1</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Mercredi</td><td>19h00 - 20h30</td><td>Adultes compétiteurs 2</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Jeudi</td><td>19h00 - 20h30</td><td>Adultes loisirs confirmés</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Vendredi</td><td>19h00 - 20h30</td><td>Jeunes + Relanceurs</td><td>François Duruisseau</td></tr>
+      
+    </table>
+  </div>
+
+  <div class="planning-section" id="planning-enfants" style="display:none;">
+    <h3>Planning des entraînements — Enfants</h3>
+    <table class="planning-table">
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      
+      <tr><td>Mercredi</td><td>14h00 - 15h30</td><td>Enfants 7/14 ans</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Mercredi</td><td>15h45 - 17h00</td><td>Enfants 5/6 ans</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Mercredi</td><td>17h15 - 18h45</td><td>Enfants 6/10 ans</td><td>François Duruisseau</td></tr>
+      
+      <tr><td>Vendredi</td><td>19h00 - 20h30</td><td>Jeunes + Relanceurs</td><td>François Duruisseau</td></tr>
+      
+    </table>
+  </div>
+
   <div class="info-callouts">
     <div class="info-callout">
       <i class="fa-solid fa-people-group"></i>
@@ -212,6 +246,8 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
     this.classList.add('active');
     document.getElementById('grid-adultes').style.display = this.dataset.target === 'adultes' ? 'grid' : 'none';
     document.getElementById('grid-enfants').style.display = this.dataset.target === 'enfants' ? 'grid' : 'none';
+    document.getElementById('planning-adultes').style.display = this.dataset.target === 'adultes' ? 'block' : 'none';
+    document.getElementById('planning-enfants').style.display = this.dataset.target === 'enfants' ? 'block' : 'none';
   });
 });
 

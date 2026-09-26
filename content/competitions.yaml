@@ -2,7 +2,7 @@
   competition: "Coupe Seniors +40ans Messieurs"
   adversaire: "TC DU DUCHE-UZES 3"
   domicile_exterieur: "Domicile"
-  score: null
+  score: 0-4
 
 - date: "2026-09-27"
   competition: "Coupe Bleue 4ème Serie Dames"
@@ -91,5 +91,35 @@
 - date: "2026-11-22"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TENNIS CLUB LES MAGES 1"
+  domicile_exterieur: "Domicile"
+  score: null
+
+- date: "2026-09-26"
+  competition: "Inter-Village"
+  adversaire: "ORSAN"
+  domicile_exterieur: "Extérieur"
+  score: 2-2
+
+- date: "2026-10-10"
+  competition: "Inter-Village"
+  adversaire: "SAINT-GERVAIS"
+  domicile_exterieur: "Domicile"
+  score: null
+
+- date: "2026-11-07"
+  competition: "Inter-Village"
+  adversaire: "VENEJAN"
+  domicile_exterieur: "Extérieur"
+  score: null
+
+- date: "2026-11-28"
+  competition: "Inter-Village"
+  adversaire: "SABRAN"
+  domicile_exterieur: "Domicile"
+  score: null
+
+- date: "2027-03-13"
+  competition: "Inter-Village"
+  adversaire: "SAINT ETIENNE DES SORTS"
   domicile_exterieur: "Domicile"
   score: null

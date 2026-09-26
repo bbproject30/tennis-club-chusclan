@@ -27,6 +27,7 @@ OUTPUT_DIR = ROOT / "site"
 # en mode "projet" (ex: "https://<user>.github.io/<repo>/").
 # Laissez "" si vous utilisez un domaine personnalisé ou Netlify.
 BASE_URL = "/tennis-club-chusclan/"
+#BASE_URL = ""
 
 COULEURS_PALETTE = ["#c81d25", "#2f7d4f", "#3498db", "#e67e22", "#8e44ad", "#d4547e", "#16a085", "#b8860b"]
 
@@ -98,6 +99,11 @@ def build():
 
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
+    nb_enfants = config["statistiques"]["adherents"]["enfants"]
+    nb_adultes = config["statistiques"]["adherents"]["adultes_femmes"] + config["statistiques"]["adherents"]["adultes_hommes"]
+    total_adherents = nb_enfants + nb_adultes
+    pct_enfants = round((nb_enfants / total_adherents) * 100, 1) if total_adherents else 0
+
     context = {
         "config": config,
         "adhesions": adhesions,
@@ -108,6 +114,9 @@ def build():
         "legende_competitions": [{"nom": n, "couleur": c} for n, c in couleur_par_competition.items()],
         "timeline_groups_json": json.dumps(timeline_groups, ensure_ascii=False),
         "timeline_items_json": json.dumps(timeline_items, ensure_ascii=False),
+        "total_adherents": total_adherents,
+        "pct_enfants": pct_enfants,
+        "nb_adultes": nb_adultes,
         "base_url": BASE_URL,
     }
 
