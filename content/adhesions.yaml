@@ -3,7 +3,7 @@ adultes:
     sous_titre: "Adhésion + 1 entraînement / semaine"
     prix: 165
     type: "cours"
-    badge: null
+    badge: "Le plus choisi"
   - titre: "Cours loisirs"
     sous_titre: "Adhésion + 2 entraînements / semaine"
     prix: 255
@@ -13,7 +13,7 @@ adultes:
     sous_titre: "Licence FFT + accès aux courts"
     prix: 100
     type: "adhesion"
-    badge: "Le plus choisi"
+    badge: null
   - titre: "Adhésion simple"
     sous_titre: "Déjà licencié dans un autre club"
     prix: 65
