@@ -530,6 +530,28 @@ table td, table th {
   gap: 0.4rem;
 }
 
+.btn-full-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-main-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-secure-text {
+  font-size: 0.75rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.9;
+}
+
 .btn-logo {
   height: 30px;
   width: auto;
