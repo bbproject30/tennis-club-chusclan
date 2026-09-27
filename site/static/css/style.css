@@ -1051,11 +1051,8 @@ table td, table th {
 
 .pratique-cta {
   margin-top: 1.2rem;
-  background: var(--vert-tennis);
-  color: white;
+  color: var(--vert-tennis);
   font-weight: 700;
-  border-radius: 30px;
-  padding: 0.6rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
