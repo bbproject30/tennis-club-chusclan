@@ -31,6 +31,10 @@
   <footer class="site-footer">
     <div class="container">
       <p>{{ config.nom_club }} — {{ config.adresse }}</p>
+      <p class="footer-email-global">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:{{ config.email_club }}">{{ config.email_club }}</a>
+      </p>
 
       <div class="footer-contacts">
         {% for c in config.contacts %}

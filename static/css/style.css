@@ -1112,3 +1112,17 @@ table td, table th {
   transform: rotate(90deg);
   margin-left: 0.3rem;
 }
+
+.footer-email-global {
+  margin: 0.5rem 0 0;
+}
+
+.footer-email-global a {
+  color: white;
+  font-weight: 600;
+}
+
+.footer-email-global i {
+  color: var(--jaune-balle);
+  margin-right: 0.4rem;
+}

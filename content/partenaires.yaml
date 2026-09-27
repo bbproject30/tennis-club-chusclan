@@ -1,10 +1,5 @@
 # Un bloc par partenaire. "logo" = nom du fichier dans static/images/
-- nom: "Boulangerie du Village"
-  logo: "logo-boulangerie.png"
-  lien: "https://exemple.fr"
-  description: "Partenaire officiel, réduction de 10% pour les licenciés."
-
-- nom: "Garage Martin"
-  logo: "logo-garage-martin.png"
-  lien: null
-  description: "Sponsor du tournoi d'été depuis 2022."
+- nom: "Mairie de Chusclan"
+  logo: "logo-mairie-chusclan.jpg"
+  lien: "https://www.chusclan.fr/"
+  description: null

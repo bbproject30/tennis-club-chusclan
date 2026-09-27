@@ -4,9 +4,9 @@
 nom_club: "Tennis Club de Chusclan"
 
 adresse: "Chemin de la Combe de Carmignan, 30200 Chusclan"
-email: "contact@tennisclub-village.fr"
+email_club: "tennis.chusclan@gmail.com"
 
-lien_adhesion_payasso: "https://www.creditmutuel.fr/fr/alliancefederale/presse/communiques-de-presse/pay-asso.html"
+lien_adhesion_payasso: "https://www.monetico-online-asso.com/tennis-club-chusclan/adhesion"
 
 reseaux_sociaux:
   facebook: "https://www.facebook.com/people/Tennis-Club-Chusclan/61594032101526/"
@@ -79,13 +79,13 @@ statistiques_photos:
 contacts:
   - role: "Président"
     nom: "Frédéric ANGELI"
-    telephone: "06 84 55 97 98"
+    telephone: null
     email: null
   - role: "Éducateur"
     nom: "François DURUISSEAU"
-    telephone: "04 66 33 11 84"
+    telephone: null
     email: "tennis.chusclan@gmail.com"
   - role: "Trésorière"
     nom: "Catherine POBEL"
-    telephone: "06 72 57 29 50"
+    telephone: null
     email: null
