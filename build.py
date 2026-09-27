@@ -49,6 +49,31 @@ def build():
 
     competitions = load_yaml("competitions.yaml")
 
+    # Préparation des données pour le graphique statistique par compétition
+    stats_par_competition = {}
+    matchs_restants_par_competition = {}
+
+    for c in competitions:
+        nom = c["competition"]
+        if c.get("score_chusclan") is None or c.get("score_adversaire") is None:
+            matchs_restants_par_competition[nom] = matchs_restants_par_competition.get(nom, 0) + 1
+            continue
+        sc, sa = c["score_chusclan"], c["score_adversaire"]
+        resultat = "victoire" if sc > sa else ("defaite" if sc < sa else "nul")
+        stats_par_competition.setdefault(nom, []).append({
+            "date": c["date"],
+            "adversaire": c["adversaire"],
+            "domicile_exterieur": c.get("domicile_exterieur", "Domicile"),
+            "score_chusclan": sc,
+            "score_adversaire": sa,
+            "resultat": resultat,
+        })
+
+    for nom in stats_par_competition:
+        stats_par_competition[nom].sort(key=lambda m: m["date"])
+
+    competition_defaut = max(stats_par_competition, key=lambda n: len(stats_par_competition[n])) if stats_par_competition else None
+
     # Liste des compétitions distinctes, dans l'ordre où elles apparaissent
     noms_competitions = []
     for c in competitions:
@@ -107,9 +132,9 @@ def build():
     context = {
         "config": config,
         "adhesions": adhesions,
-        #"tournois": tournois,
-        #"evenements": evenements,
-        #"equipes": equipes,
+        "stats_par_competition_json": json.dumps(stats_par_competition, ensure_ascii=False),
+        "matchs_restants_json": json.dumps(matchs_restants_par_competition, ensure_ascii=False),
+        "competition_defaut": competition_defaut,
         "partenaires": partenaires,
         "legende_competitions": [{"nom": n, "couleur": c} for n, c in couleur_par_competition.items()],
         "timeline_groups_json": json.dumps(timeline_groups, ensure_ascii=False),

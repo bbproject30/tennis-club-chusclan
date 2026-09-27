@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tennis Club de Chusclan — Compétitions</title>
-  <link rel="stylesheet" href="/tennis-club-chusclan/static/css/style.css">
+  <link rel="stylesheet" href="static/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="">
   <header class="site-header">
     <div class="container">
       <div class="header-brand">
-        <img src="/tennis-club-chusclan/static/images/logo_club.svg" alt="Logo Tennis Club de Chusclan" class="header-logo">
+        <img src="static/images/logo_club.svg" alt="Logo Tennis Club de Chusclan" class="header-logo">
         <h1>Tennis Club de Chusclan</h1>
       </div>
       <nav>
-        <a href="/tennis-club-chusclan/index.html">Accueil</a>
-        <a href="/tennis-club-chusclan/adhesions.html">Adhésions & Tarifs</a>
-        <a href="/tennis-club-chusclan/actualites.html">Actualités</a>
-        <a href="/tennis-club-chusclan/competitions.html">Compétitions</a>
-        <a href="/tennis-club-chusclan/partenaires.html">Nos partenaires</a>
+        <a href="index.html">Accueil</a>
+        <a href="adhesions.html">Adhésions & Tarifs</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="competitions.html">Compétitions</a>
+        <a href="partenaires.html">Nos partenaires</a>
       </nav>
     </div>
   </header>
@@ -55,6 +55,209 @@
     </div>
     <div id="timeline-competitions"></div>
   </div>
+  
+  <section>
+    <h2>Statistiques par compétition</h2>
+    <div class="stats-comp-wrapper">
+      <div class="stats-comp-select-row">
+        <label for="select-competition">Compétition :</label>
+        <select id="select-competition"></select>
+      </div>
+      <div class="stats-comp-grid">
+        <div class="stats-comp-chart">
+          <canvas id="bar-resultats"></canvas>
+          <div class="legende-lieu">
+            <span><span class="lieu-echantillon" style="background:#2f7d4f;"></span> Score Chusclan</span>
+            <span><span class="lieu-echantillon" style="background:#c81d25;"></span> Score adversaire</span>
+            <span><span class="lieu-echantillon" style="background:#999999;"></span> Match nul</span>
+            <span><span class="lieu-echantillon lieu-pointille-echantillon"></span> Extérieur</span>
+          </div>
+        </div>
+        <div class="stats-comp-donut">
+          <p class="matchs-restants" id="matchs-restants"></p>
+          <div class="donut" id="donut-bilan">
+            <div class="donut-center">
+              <span class="donut-total" id="donut-bilan-total">0</span>
+              <span class="donut-label">matchs</span>
+            </div>
+          </div>
+          <ul class="donut-legende" id="donut-bilan-legende"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const statsParCompetition = {"Coupe Seniors +40ans Messieurs": [{"date": "2026-09-26", "adversaire": "TC DU DUCHE-UZES 3", "domicile_exterieur": "Domicile", "score_chusclan": 0, "score_adversaire": 4, "resultat": "defaite"}], "Coupe Bleue 4ème Serie Dames": [{"date": "2026-09-27", "adversaire": "TC SOMMIERES 1", "domicile_exterieur": "Extérieur", "score_chusclan": 4, "score_adversaire": 1, "resultat": "victoire"}], "Inter-Village": [{"date": "2026-09-26", "adversaire": "ORSAN", "domicile_exterieur": "Extérieur", "score_chusclan": 2, "score_adversaire": 2, "resultat": "nul"}]};
+    const matchsRestants = {"Coupe Seniors +40ans Messieurs": 4, "Coupe Bleue 4ème Serie Messieurs": 6, "Coupe Bleue 4ème Serie Dames": 4, "Inter-Village": 4};
+    const competitionDefaut = "Coupe Seniors +40ans Messieurs";
+    const select = document.getElementById('select-competition');
+
+    Object.keys(statsParCompetition).forEach(nom => {
+      const option = document.createElement('option');
+      option.value = nom;
+      option.textContent = nom;
+      if (nom === competitionDefaut) option.selected = true;
+      select.appendChild(option);
+    });
+
+    let chart = null;
+
+    function couleurResultat(resultat) {
+      if (resultat === 'victoire') return '#2f7d4f';
+      if (resultat === 'defaite') return '#c81d25';
+      return '#999999';
+    }
+
+    function afficherCompetition(nom) {
+      const matchs = statsParCompetition[nom];
+
+      const labels = matchs.map(m => m.adversaire);
+
+      const dataChusclan = matchs.map(m => m.score_chusclan);
+      const dataAdversaire = matchs.map(m => -m.score_adversaire);
+
+      function creerMotifPointille(couleurBase) {
+        const taille = 8;
+        const patternCanvas = document.createElement('canvas');
+        patternCanvas.width = taille;
+        patternCanvas.height = taille;
+        const pctx = patternCanvas.getContext('2d');
+        pctx.fillStyle = couleurBase;
+        pctx.fillRect(0, 0, taille, taille);
+        pctx.fillStyle = 'rgba(255,255,255,0.75)';
+        pctx.beginPath();
+        pctx.arc(taille / 2, taille / 2, 1.4, 0, Math.PI * 2);
+        pctx.fill();
+        return pctx.createPattern(patternCanvas, 'repeat');
+      }
+
+      function couleurBaseChusclan(m) {
+        return m.score_chusclan === m.score_adversaire ? '#999999' : '#2f7d4f';
+      }
+
+      function couleurBaseAdversaire(m) {
+        return m.score_chusclan === m.score_adversaire ? '#999999' : '#c81d25';
+      }
+
+      const remplissagesChusclan = matchs.map(m => {
+        const base = couleurBaseChusclan(m);
+        return m.domicile_exterieur === 'Extérieur' ? creerMotifPointille(base) : base;
+      });
+
+      const remplissagesAdversaire = matchs.map(m => {
+        const base = couleurBaseAdversaire(m);
+        return m.domicile_exterieur === 'Extérieur' ? creerMotifPointille(base) : base;
+      });
+
+      const ctx = document.getElementById('bar-resultats').getContext('2d');
+      if (chart) chart.destroy();
+
+      const pluginContourResultat = {
+        id: 'contourResultat',
+        afterDatasetsDraw(chartInstance) {
+          const metaChusclan = chartInstance.getDatasetMeta(0);
+          const metaAdversaire = chartInstance.getDatasetMeta(1);
+          const context = chartInstance.ctx;
+
+          matchs.forEach((m, i) => {
+            let couleurContour;
+            if (m.score_chusclan === m.score_adversaire) return; // pas de contour sur un nul
+            couleurContour = m.score_chusclan > m.score_adversaire ? '#00e676' : '#ff1744';
+
+            const barChusclan = metaChusclan.data[i];
+            const barAdversaire = metaAdversaire.data[i];
+            const marge = 0;
+            const x = barChusclan.x - barChusclan.width / 2 - marge;
+            const largeur = barChusclan.width + marge * 2;
+            const yHaut = barChusclan.y - marge;
+            const yBas = barAdversaire.y + marge;
+
+            context.save();
+            context.strokeStyle = couleurContour;
+            context.lineWidth = 5;
+            context.strokeRect(x, yHaut, largeur, yBas - yHaut);
+            context.restore();
+          });
+        },
+      };
+
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Chusclan',
+              data: dataChusclan,
+              backgroundColor: remplissagesChusclan,
+              borderWidth: 0,
+              stack: 'match',
+            },
+            {
+              label: 'Adversaire',
+              data: dataAdversaire,
+              backgroundColor: remplissagesAdversaire,
+              borderWidth: 0,
+              stack: 'match',
+            },
+          ],
+        },
+        plugins: [pluginContourResultat],
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const m = matchs[context.dataIndex];
+                  return `${m.adversaire} — ${m.domicile_exterieur} — Chusclan ${m.score_chusclan} / Adversaire ${m.score_adversaire}`;
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              title: { display: true, text: 'Points marqués' },
+            },
+          },
+        },
+      });
+
+      const total = matchs.length;
+      const victoires = matchs.filter(m => m.resultat === 'victoire').length;
+      const defaites = matchs.filter(m => m.resultat === 'defaite').length;
+      const nuls = matchs.filter(m => m.resultat === 'nul').length;
+
+      const pctVictoires = total ? (victoires / total) * 100 : 0;
+      const pctDefaites = total ? (defaites / total) * 100 : 0;
+
+      document.getElementById('donut-bilan').style.background =
+        `conic-gradient(#00e676 0% ${pctVictoires}%, #ff1744 ${pctVictoires}% ${pctVictoires + pctDefaites}%, #999999 ${pctVictoires + pctDefaites}% 100%)`;
+      document.getElementById('donut-bilan-total').textContent = total;
+
+      document.getElementById('donut-bilan-legende').innerHTML = `
+        <li><span class="dot" style="background:#00e676;"></span> ${victoires} victoire${victoires > 1 ? 's' : ''}</li>
+        <li><span class="dot" style="background:#ff1744;"></span> ${defaites} défaite${defaites > 1 ? 's' : ''}</li>
+        <li><span class="dot" style="background:#999999;"></span> ${nuls} nul${nuls > 1 ? 's' : ''}</li>
+      `;
+      
+      const restants = matchsRestants[nom] || 0;
+      document.getElementById('matchs-restants').textContent = `Matchs restants : ${restants}`;
+  
+    }
+
+    select.addEventListener('change', function () {
+      afficherCompetition(this.value);
+    });
+
+    if (competitionDefaut) afficherCompetition(competitionDefaut);
+  });
+  </script>
+  
 </section>
 
 <link href="https://cdn.jsdelivr.net/npm/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
@@ -81,11 +284,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <div class="pdf-container">
     <p class="rotate-hint">Pour une meilleure lisibilité, tounez votre écran <i class="fa-solid fa-mobile-screen-button rotate-icon"></i></p>
-    <iframe src="/tennis-club-chusclan/static/documents/competitions_equipe_gard_2026_2027.pdf" title="Calendrier officiel Comité Tennis Gard 2027"></iframe>
+    <iframe src="static/documents/competitions_equipe_gard_2026_2027.pdf" title="Calendrier officiel Comité Tennis Gard 2027"></iframe>
   </div>
 
   <div style="text-align:center; margin-top:1rem;">
-    <a class="btn-primary" href="/tennis-club-chusclan/static/documents/competitions_equipe_gard_2026_2027.pdf" download>
+    <a class="btn-primary" href="static/documents/competitions_equipe_gard_2026_2027.pdf" download>
       <i class="fa-solid fa-file-arrow-down"></i> Télécharger le PDF
     </a>
   </div>

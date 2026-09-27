@@ -1126,3 +1126,77 @@ table td, table th {
   color: var(--jaune-balle);
   margin-right: 0.4rem;
 }
+
+.stats-comp-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 1.3rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stats-comp-select-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.stats-comp-select-row select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.stats-comp-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .stats-comp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.legende-lieu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.lieu-echantillon {
+  display: inline-block;
+  width: 20px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+.lieu-pointille-echantillon {
+  background-color: #666;
+  background-image: radial-gradient(rgba(255,255,255,0.75) 1.4px, transparent 1.4px);
+  background-size: 8px 8px;
+}
+
+.stats-comp-donut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matchs-restants {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gris-fonce);
+  margin: 0 0 0.8rem;
+  text-align: center;
+}

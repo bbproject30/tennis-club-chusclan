@@ -3,123 +3,165 @@
   adversaire: "TC DU DUCHE-UZES 3"
   domicile_exterieur: "Domicile"
   score: 0-4
+  score_chusclan: 0
+  score_adversaire: 4
 
 - date: "2026-09-27"
   competition: "Coupe Bleue 4ème Serie Dames"
   adversaire: "TC SOMMIERES 1"
   domicile_exterieur: "Extérieur"
   score: 4-1
+  score_chusclan: 4
+  score_adversaire: 1
 
 - date: "2026-10-03"
   competition: "Coupe Seniors +40ans Messieurs"
   adversaire: "HAUT DE NIMES TC 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-04"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TC CAVEIRAC 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-04"
   competition: "Coupe Bleue 4ème Serie Dames"
   adversaire: "TENNIS CLUB DE BAGARD 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-10"
   competition: "Coupe Seniors +40ans Messieurs"
   adversaire: "TC AIMARGUES 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-11"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TENNIS CLUB DE ROUSSON 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-11"
   competition: "Coupe Bleue 4ème Serie Dames"
   adversaire: "TC SAINT VICTOR LA COSTE 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-17"
   competition: "Coupe Seniors +40ans Messieurs"
   adversaire: "TC BRIGNON 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-18"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TC VAUVERT 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-10-18"
   competition: "Coupe Bleue 4ème Serie Dames"
   adversaire: "TC CENDRASIEN 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-07"
   competition: "Coupe Seniors +40ans Messieurs"
   adversaire: "TC BLAUZACOIS 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-08"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TC MANDUEL 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-08"
   competition: "Coupe Bleue 4ème Serie Dames"
   adversaire: "TC SAINT GENIES 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-15"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TENNIS CLUB MARGUERITTES 1"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-22"
   competition: "Coupe Bleue 4ème Serie Messieurs"
   adversaire: "TENNIS CLUB LES MAGES 1"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-09-26"
   competition: "Inter-Village"
   adversaire: "ORSAN"
   domicile_exterieur: "Extérieur"
   score: 2-2
+  score_chusclan: 2
+  score_adversaire: 2
 
 - date: "2026-10-10"
   competition: "Inter-Village"
   adversaire: "SAINT-GERVAIS"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-07"
   competition: "Inter-Village"
   adversaire: "VENEJAN"
   domicile_exterieur: "Extérieur"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2026-11-28"
   competition: "Inter-Village"
   adversaire: "SABRAN"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
 
 - date: "2027-03-13"
   competition: "Inter-Village"
   adversaire: "SAINT ETIENNE DES SORTS"
   domicile_exterieur: "Domicile"
   score: null
+  score_chusclan: null
+  score_adversaire: null
