@@ -42,9 +42,9 @@ def load_yaml(filename):
 
 def build():
     config = load_yaml("config.yaml")
-    tournois = load_yaml("tournois.yaml")
-    evenements = load_yaml("evenements.yaml")
-    equipes = load_yaml("equipes.yaml")
+    #tournois = load_yaml("tournois.yaml")
+    #evenements = load_yaml("evenements.yaml")
+    #equipes = load_yaml("equipes.yaml")
     adhesions = load_yaml("adhesions.yaml")
 
     competitions = load_yaml("competitions.yaml")
@@ -107,9 +107,9 @@ def build():
     context = {
         "config": config,
         "adhesions": adhesions,
-        "tournois": tournois,
-        "evenements": evenements,
-        "equipes": equipes,
+        #"tournois": tournois,
+        #"evenements": evenements,
+        #"equipes": equipes,
         "partenaires": partenaires,
         "legende_competitions": [{"nom": n, "couleur": c} for n, c in couleur_par_competition.items()],
         "timeline_groups_json": json.dumps(timeline_groups, ensure_ascii=False),
