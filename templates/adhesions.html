@@ -47,9 +47,9 @@
   <div class="planning-section" id="planning-adultes">
     <h3>Planning des entraînements — Adultes</h3>
     <table class="planning-table">
-      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th></tr>
       {% for p in adhesions.planning.adultes %}
-      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td><td>{{ p.encadrant }}</td></tr>
+      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td></tr>
       {% endfor %}
     </table>
   </div>
@@ -58,9 +58,9 @@
   <div class="planning-section" id="planning-enfants" style="display:none;">
     <h3>Planning des entraînements — Enfants</h3>
     <table class="planning-table">
-      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th><th>Encadrant</th></tr>
+      <tr><th>Jour</th><th>Horaire</th><th>Groupe</th></tr>
       {% for p in adhesions.planning.enfants %}
-      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td><td>{{ p.encadrant }}</td></tr>
+      <tr><td>{{ p.jour }}</td><td>{{ p.horaire }}</td><td>{{ p.groupe }}</td></tr>
       {% endfor %}
     </table>
   </div>
