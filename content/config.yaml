@@ -13,7 +13,7 @@ reseaux_sociaux:
   whatsapp_general: "https://chat.whatsapp.com/votre-lien-groupe-general"
 
 histoire:
-  texte: "Depuis 1980, Le club de tennis de Chusclan vous accueille pour découvrir le plaisir du sport à partager dans une ambiance familiale. Des cours sont proposés en semaine, et des compétitions loisirs et officielles sont disputées tout au long de l'année."
+  texte: "Depuis 1985, Le club de tennis de Chusclan vous accueille pour découvrir le plaisir du sport à partager dans une ambiance familiale. Des cours sont proposés en semaine, et des compétitions loisirs et officielles sont disputées tout au long de l'année."
 
 infrastructures:
   - nom: "Court N°1"
@@ -58,11 +58,10 @@ statistiques:
   competitions:
     nb_equipes: 7
     liste:
-      - "1 équipe 4ème série Dames"
-      - "1 équipe 4ème série Hommes"
-      - "1 équipe 4ème série Mixte"
-      - "1 équipe +40 Hommes"
-      - "1 équipe Loisir"
+      - "Coupe Bleue (F et H)"
+      - "Coupe 40+ (H)"
+      - "Interclubs Seniors (F, H et Mixte)"
+      - "Loisir (Inter-village)"
 
 histoire_photos:
   - "decouvrir-chusclan.jpg"
