@@ -1106,3 +1106,9 @@ table td, table th {
     display: block;
   }
 }
+
+.rotate-icon {
+  display: inline-block;
+  transform: rotate(90deg);
+  margin-left: 0.3rem;
+}
