@@ -6,18 +6,27 @@
   <h2>Actualités</h2>
   <p>Suivez toute la vie du club (photos, résultats, événements) directement depuis notre page Facebook.</p>
 
-  <div class="fb-feed-container">
-    <iframe
-      src="https://www.facebook.com/plugins/page.php?href={{ config.reseaux_sociaux.facebook | urlencode }}&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-      width="500"
-      height="700"
-      style="border:none;overflow:hidden;"
-      scrolling="no"
-      frameborder="0"
-      allowfullscreen="true"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  </div>
+  <div class="fb-feed-container" id="fb-feed-container"></div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const conteneur = document.getElementById('fb-feed-container');
+    const largeur = Math.min(conteneur.offsetWidth, 700);
+    const hrefEncode = encodeURIComponent("{{ config.reseaux_sociaux.facebook }}");
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.facebook.com/plugins/page.php?href=${hrefEncode}&tabs=timeline&width=${largeur}&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
+    iframe.width = largeur;
+    iframe.height = 700;
+    iframe.style.border = 'none';
+    iframe.style.overflow = 'hidden';
+    iframe.scrolling = 'no';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+
+    conteneur.appendChild(iframe);
+  });
+  </script>
 
   <p class="fallback-lien">
     Le flux ne s'affiche pas ? <a href="{{ config.reseaux_sociaux.facebook }}" target="_blank">Voir directement sur Facebook <i class="fa-brands fa-facebook"></i></a>
